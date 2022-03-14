@@ -20,6 +20,7 @@ changeColor.addEventListener("click", async () => {
 // current page
 function fnExcelReport()
 {
+    // Parte 1. Cabeceras
     // Obtencion del RFC y Nombre
     var cab1 = document.getElementById('ctl00_mainCopy_Lbl_Nombre').innerHTML;
 
@@ -29,27 +30,27 @@ function fnExcelReport()
     var arrD = cab2.getElementsByTagName("td");
 
     // Creacion de la tabla de los datos de cabecera 2
-    cab2 = "<tr>" + "<th>" + arrH[6].innerHTML + "</th><td>" + arrD[6].innerHTML + "</td>" + "</tr>" + 
-    "<tr>" + "<th>" + "Grupo" + "</th><td>" + arrD[4].innerHTML + "</td>" + 
-    "<tr>" + "<th>" + arrH[0].innerHTML + "</th>" + "<td>" + arrD[0].innerHTML + "</td>" + "</tr>" +"</tr>";
+    cab2 = "<tr>" + "<th align=LEFT>" + "Materia" + "</th><td>" + arrD[6].innerHTML + "</td>" + "</tr>" + 
+    "<tr>" + "<th align=LEFT>" + "Grupo" + "</th><td>" + arrD[4].innerHTML + "</td>" + 
+    "<tr>" + "<th align=LEFT>" + "Semestre" + "</th>" + "<td align=LEFT>" + arrD[0].innerHTML + "</td>" + "</tr>" +"</tr>";
 
     // Concatenacion al texto principal
     var cab2 = "<table>" + cab2 + "</table>";
     var tab_text = cab1 + cab2;
 
     // Separador de diseño
-    tab_text+="\n<br><table border='2px'><tr bgcolor='#87AFC6'>";
+    tab_text+="\n<br><table border='2px'><tr bgcolor='#7F1E57' style='color: #FFF;'>";
     var textRange; var j=0;
 
+    // Parte 2. Tabla
     // Obtencion de la tabla de alumnos
     tab = document.getElementsByClassName("ListaAlumnos")[0];
-    columns = tab.getElementsByTagName("tr");                   // Obtenemos todas las filas
-    ans = columns[0].innerHTML + "<td>" + "Nuevo" + "</td>"
+    //rows = tab.getElementsByTagName("tr");                    // Obtenemos todas las filas
+    //ans = rows[0].innerHTML;    // Cabeceras de la tabla 2
 
-    tab_text += ans;
+    //tab_text += ans;
 
     // Pasar por todos los datos de la tabla
-    
     for(j = 0 ; j < tab.rows.length ; j++) 
     {
         tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
